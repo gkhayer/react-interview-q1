@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 
 const UsersTable = ({ users }) => {
   return (
-    <TableContainer component={Paper} sx={{ minHeight: "300px" }}>
+    <TableContainer component={Paper} sx={{ minHeight: "300px", border: '.2rem solid' }}>
       <Table stickyHeader>
         <TableHead>
           <TableRow>
@@ -22,10 +22,10 @@ const UsersTable = ({ users }) => {
             <TableRow
               key={user.name + index}
               sx={{
-                bgcolor: index % 2 ? "white" : "#eeeeee",
+                bgcolor: index % 2 ? "white" : "#eeeeee" 
               }}
             >
-              <TableCell component="th" scope="row">
+              <TableCell component="th" scope="row" sx={{ border: 1 }}>
                 {user.name}
               </TableCell>
               <TableCell align="left">{user.location}</TableCell>

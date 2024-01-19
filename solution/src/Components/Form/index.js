@@ -23,6 +23,7 @@ import {
     const handleChange = async (e) => {
       setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   
+      // Name validation check
       if (e.target.name === "name" && e.target.value) {
         const nameValidation = await isNameValid(e.target.value);
         const isNameTakenLocal = users.some(
@@ -46,14 +47,14 @@ import {
     return (
       <Box
         sx={{
-          display: "flex",
+          width: "30rem",
+          display: "inline-flex",
           flexDirection: "column",
           color: "black",
-          border: "5px solid",
-          padding: "50px",
-          marginInline: "400px",
-          marginBlock: "100px",
-          gap: "20px",
+          border: ".2rem solid",
+          borderRadius: '1rem',
+          padding: "2rem",
+          gap: "2rem",
         }}
       >
         <form onSubmit={handleSubmit}>
@@ -71,9 +72,9 @@ import {
             <TextField
               name="name"
               value={input.name}
-              sx={{ width: 1 }}
+              sx={{ width: 1, border: '.2rem solid'}}
               onChange={handleChange}
-              helperText={error && "this name has already been taken"}
+              helperText={error && "this name has already been taken"} //if error state is true, then error msg will show 
               error={error}
             />
           </Box>
@@ -86,18 +87,18 @@ import {
               value={input.location}
               onChange={handleChange}
               displayEmpty
-              sx={{ width: 1 }}
+              sx={{ width: 1, border: '.2rem solid'}}
               align="left"
             >
               {locations.map((location, index) => (
-                <MenuItem key={location + index} value={location}>
+                <MenuItem key={location + index} value={location} >
                   {location}
                 </MenuItem>
               ))}
             </Select>
           </Box>
           <Box display="flex" justifyContent="flex-end" gap="10px" mt="100px">
-            <Button variant="outlined" color="inherit" onClick={handleClear}>
+            <Button variant="outlined" color="inherit" onClick={handleClear} sx={{border: '.2rem solid '}}>
               Clear
             </Button>
             <Button
@@ -105,6 +106,7 @@ import {
               color="inherit"
               type="submit"
               disabled={error || !(input.name && input.location)}
+              sx={{border: '.2rem solid'}}
             >
               Add
             </Button>
